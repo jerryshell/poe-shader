@@ -36,10 +36,10 @@ float4 RenderVisibility( const PS_INPUT input ) : PIXEL_RETURN_SEMANTIC
 	float2 planar_pos = uv * tile_map_size.xy;
 
 	float dist = length(planar_pos - explored_tile.xy);
-	
+
 	if (use_revealed_bound)
 		dist = min(dist, RectDist(revealed_bound, planar_pos));
-		
+
 	float ratio = saturate((1.0f - dist / visibility_radius) * 2.0f);
 
 	float2 viewport_size = visibility_map_size.xy;
